@@ -1,7 +1,31 @@
 # Final delivery verification
 
-This report records the prepublication archive checks. See [GitHub Actions](https://github.com/RyanJBush/retrieval-eval-harness/actions/workflows/tests.yml)
-for hosted results. The bundled run records the source fingerprint of the [initial publication](https://github.com/RyanJBush/retrieval-eval-harness/commit/de6aa33488e70cdbdb8c06eda970ab6e2be6e3a3).
+## Post-publication update — November 13, 2026
+
+[Hosted run 42416440729](https://github.com/RyanJBush/Retrieval-Evaluation-Harness/actions/runs/42416440729)
+passed at implementation commit `5daa6003131c1ce3e11a1673c976c24dac2c80c7`.
+Ubuntu: 404 passed, 12 model tests deselected. Windows: 403 passed, 1 skipped, 12 model tests deselected.
+Both jobs passed 14/14 viewer smoke checks. These results were inspected directly from the hosted job logs.
+
+A new independent local review recalculated the bundled metrics and latency summaries, verified fixture hashes,
+and reproduced all eight BM25 rankings/scores. Its full local suite had 390 passes, one skip and 13 loopback-HTTP
+failures caused by this review environment's socket restrictions; fresh model inference was not executed.
+See [the complete review](docs/INDEPENDENT_REVIEW.md) for commands, evidence and limits.
+
+## Repository rename — November 21, 2026
+
+The repository moved from `RyanJBush/retrieval-eval-harness` to `RyanJBush/Retrieval-Evaluation-Harness`.
+GitHub links in the README and these notes now use the canonical path. The Python distribution (`retrieval-eval`),
+import package (`retrieval_eval`), run schemas, fixture, bundled run and evidence logs are unchanged; local paths such as
+`/tmp/walk/retrieval-eval-harness` in `evidence/` are historical working-directory names. No implementation, test or result changed.
+
+**Historical scope:** the remaining sections preserve Claude's prepublication archive record. Statements below about
+unverified Windows behavior or absent hosted CI describe that earlier stage, not the current published CI status.
+
+## Prepublication archive record
+
+This report records the prepublication archive checks. See [GitHub Actions](https://github.com/RyanJBush/Retrieval-Evaluation-Harness/actions/workflows/tests.yml)
+for hosted results. The bundled run records the source fingerprint of the [initial publication](https://github.com/RyanJBush/Retrieval-Evaluation-Harness/commit/de6aa33488e70cdbdb8c06eda970ab6e2be6e3a3).
 The subsequent viewer startup fix flushes the printed URL when stdout is captured. It leaves the retrieval and timing code as published.
 
 Prepared by Claude on 2026-11-07. **All results below were produced on Linux** (Linux 6.18 x86_64, Intel Xeon 2.10 GHz, 1 logical CPU, 3.9 GiB, Python 3.12.3,
