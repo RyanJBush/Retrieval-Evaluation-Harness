@@ -5,7 +5,7 @@ This review found outdated CI wording and updates documentation only. It does no
 
 ## Reviewed source and independence
 
-- Repository: https://github.com/RyanJBush/retrieval-eval-harness
+- Repository: https://github.com/RyanJBush/Retrieval-Evaluation-Harness (reviewed under its former path, `RyanJBush/retrieval-eval-harness`)
 - Implementation reviewed: `5daa6003131c1ce3e11a1673c976c24dac2c80c7`.
 - Retrieved all 54 text files through the connected GitHub service at that exact commit and verified every Git blob hash locally. Two JSON evidence files needed the original no-final-newline byte form restored after transport; final mismatches: zero.
 - Binary screenshots were present in the GitHub tree but were not replayed during this review.
@@ -73,7 +73,7 @@ Fresh embedding-model inference and the 12 model-marked tests remain unexecuted 
 
 ## Hosted checks inspected directly
 
-[Run 42416440729](https://github.com/RyanJBush/retrieval-eval-harness/actions/runs/42416440729)
+[Run 42416440729](https://github.com/RyanJBush/Retrieval-Evaluation-Harness/actions/runs/42416440729)
 tested the reviewed implementation commit.
 
 | Job | Default suite | Viewer smoke |

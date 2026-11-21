@@ -1,10 +1,12 @@
 # Retrieval Evaluation Harness
 
+**Keyword vs. Semantic Search: Interactive Evaluation**
+
+[![Tests](https://github.com/RyanJBush/Retrieval-Evaluation-Harness/actions/workflows/tests.yml/badge.svg)](https://github.com/RyanJBush/Retrieval-Evaluation-Harness/actions/workflows/tests.yml)
+
 Independent completion review: [observed results and verification limits](docs/INDEPENDENT_REVIEW.md).
 
-[![Tests](https://github.com/RyanJBush/retrieval-eval-harness/actions/workflows/tests.yml/badge.svg)](https://github.com/RyanJBush/retrieval-eval-harness/actions/workflows/tests.yml)
-
-Compares BM25 with a pinned CPU embedding model (`sentence-transformers/all-MiniLM-L6-v2`) on the same documents, queries and
+Compares BM25 keyword retrieval with semantic retrieval by a pinned CPU embedding model (`sentence-transformers/all-MiniLM-L6-v2`) on the same documents, queries and
 relevance judgments. The CLI exports per-query Recall@k and RR@k, aggregate Recall@k and MRR@k, and CPU retrieval latency
 in JSON and CSV. The local viewer shows both rankings side by side so you can inspect what each method missed.
 
@@ -17,6 +19,8 @@ Needs Python 3.12 and [uv](https://docs.astral.sh/uv/). Installing dependencies 
 Once setup is complete, the viewer opens the bundled run offline and uses the texts and judgments embedded in that file.
 
 ```console
+git clone https://github.com/RyanJBush/Retrieval-Evaluation-Harness.git
+cd Retrieval-Evaluation-Harness
 uv sync --locked
 uv run --no-sync python -m retrieval_eval.viewer examples/demo/run.json --port 0
 ```
@@ -270,7 +274,7 @@ saved rankings and judgments; each saved rank must equal its one-based position 
 `.github/workflows/tests.yml` runs on every push and pull request on **Ubuntu and Windows**: it installs the locked base environment
 (`uv sync --locked`, uv 0.12.17), runs the default suite (`uv run --no-sync pytest -q`, which never downloads the model) and the viewer
 smoke check on `examples/demo/run.json`. Each job has a 10-minute timeout, so a hung test fails the job instead of blocking it. Actions are
-pinned to commit SHAs. The pinned CPU model smoke check is a separate manual command (table above), not part of CI. Hosted [run 42416440729](https://github.com/RyanJBush/retrieval-eval-harness/actions/runs/42416440729) passed on implementation commit
+pinned to commit SHAs. The pinned CPU model smoke check is a separate manual command (table above), not part of CI. Hosted [run 42416440729](https://github.com/RyanJBush/Retrieval-Evaluation-Harness/actions/runs/42416440729) passed on implementation commit
 `5daa6003131c1ce3e11a1673c976c24dac2c80c7`: Ubuntu **404 passed, 12 deselected**; Windows **403 passed, 1 skipped, 12 deselected**.
 Both jobs also passed all **14/14** viewer smoke checks. These are base-environment checks; they do not execute the real embedding model.
 See the [independent completion review](docs/INDEPENDENT_REVIEW.md) for separately scoped local results and environment restrictions.
